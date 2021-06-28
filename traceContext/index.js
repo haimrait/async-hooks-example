@@ -12,23 +12,12 @@ function init (asyncId, type, triggerAsyncId, resource) {
     if (traceMap.has(triggerAsyncId)) {
         traceMap.set(asyncId, traceMap.get(triggerAsyncId))
     }
-    // fs.writeFileSync(1, `init async id ${asyncId} triggerAsyncId ${triggerAsyncId} type ${type}\n`);
-
 }
-
-// function before (asyncId) {
-//     fs.writeFileSync(1, `before callback: ${asyncId}\n`);
-// }
-
-// function after (asyncId) {
-//     fs.writeFileSync(1, `after callback : ${asyncId}\n`);
-// }
 
 function destroy (asyncId) {
     if (traceMap.has(asyncId)) {
         traceMap.delete(asyncId)
     }
-    // fs.writeFileSync(1, `async id destroyed: ${asyncId}\n`);
 }
 
 module.exports.createTraceContext = function (event, traceId = uuidv4()) {
